@@ -7,6 +7,7 @@ import io.swagger.petstore.http.HttpClient;
 import org.testng.annotations.Test;
 import java.util.ArrayList;
 import static io.restassured.RestAssured.given;
+import static io.swagger.petstore.data.Status.AVAILABLE;
 
 public class PetTests extends HttpClient {
     @Test(description = "POST /pet")
@@ -19,9 +20,9 @@ public class PetTests extends HttpClient {
         Pet pet = new Pet(0,
                 new Category(0, randomName),
                 randomName,
-                new String[] {"http://" + faker.internet().url()},
+                new String[] {"https://www.testing-x.com"},
                 tag,
-                "available");
+                AVAILABLE.getValue());
 
         given().body(pet)
         .when().post("/pet")
