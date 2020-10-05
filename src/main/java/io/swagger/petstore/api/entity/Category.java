@@ -1,4 +1,4 @@
-package io.swagger.petstore.entity;
+package io.swagger.petstore.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
@@ -9,14 +9,14 @@ import lombok.ToString;
 @Setter
 @ToString
 @JsonPropertyOrder({"id", "name"})
-public class Tag {
+public class Category {
     private int id;
     private String name;
 
-    public Tag() {
+    public Category() {
     }
 
-    public Tag(int id, String name) {
+    public Category(int id, String name) {
         this.id = id;
         this.name = name;
     }

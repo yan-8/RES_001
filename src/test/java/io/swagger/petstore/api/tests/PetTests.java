@@ -1,13 +1,13 @@
-package io.swagger.petstore.tests;
+package io.swagger.petstore.api.tests;
 
-import io.swagger.petstore.entity.Category;
-import io.swagger.petstore.entity.Pet;
-import io.swagger.petstore.entity.Tag;
-import io.swagger.petstore.http.HttpClient;
+import io.swagger.petstore.api.http.HttpClient;
+import io.swagger.petstore.api.entity.Category;
+import io.swagger.petstore.api.entity.Pet;
+import io.swagger.petstore.api.entity.Tag;
 import org.testng.annotations.Test;
 import java.util.ArrayList;
 import static io.restassured.RestAssured.given;
-import static io.swagger.petstore.data.Status.AVAILABLE;
+import static io.swagger.petstore.api.data.Status.AVAILABLE;
 
 public class PetTests extends HttpClient {
     @Test(description = "POST /pet")

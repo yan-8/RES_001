@@ -1,4 +1,4 @@
-package io.swagger.petstore.http;
+package io.swagger.petstore.api.http;
 
 import com.github.javafaker.Faker;
 import io.restassured.RestAssured;

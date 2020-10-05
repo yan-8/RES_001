@@ -1,4 +1,4 @@
-package io.swagger.petstore.entity;
+package io.swagger.petstore.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;

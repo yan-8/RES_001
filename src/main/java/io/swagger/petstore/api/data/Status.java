@@ -1,4 +1,4 @@
-package io.swagger.petstore.data;
+package io.swagger.petstore.api.data;
 
 import lombok.Getter;
 

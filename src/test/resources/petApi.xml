@@ -4,7 +4,7 @@
 <suite name="Swagger Petstore Suite">
     <test name = "Pet Endpoint Testing">
         <classes>
-            <class name = "io.swagger.petstore.tests.PetTests"/>
+            <class name = "io.swagger.petstore.api.tests.PetTests"/>
         </classes>
     </test>
 </suite>
