@@ -25,7 +25,7 @@ public class PetTests {
         final String uri = "https://petstore.swagger.io/v2";
 
         faker = new Faker(new Locale("en-US"));
-        RestAssured.baseURI = uri; // ?
+        RestAssured.baseURI = uri; // TODO ---> improve it
     }
 
     @Test(description = "GET pet/{petId}")
