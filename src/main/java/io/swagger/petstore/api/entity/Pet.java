@@ -10,24 +10,24 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@JsonPropertyOrder({"petId", "category", "name", "photoUrls", "tags", "status"})
+@JsonPropertyOrder({"petId", "category", "petName", "photoUrls", "tags", "petStatus"})
 public class Pet {
     @JsonProperty("id") private int petId;
     private Category category;
-    private String name;
+    @JsonProperty("name") private String petName;
     private String[] photoUrls;
     private List<Tag> tags;
-    private String status;
+    @JsonProperty("status") private String petStatus;
 
     public Pet() {
     }
 
-    public Pet(int petId, Category category, String name, String[] photoUrls, List<Tag> tags, String status) {
+    public Pet(int petId, Category category, String petName, String[] photoUrls, List<Tag> tags, String petStatus) {
         this.petId = petId;
         this.category = category;
-        this.name = name;
+        this.petName = petName;
         this.photoUrls = photoUrls;
         this.tags = tags;
-        this.status = status;
+        this.petStatus = petStatus;
     }
 }
