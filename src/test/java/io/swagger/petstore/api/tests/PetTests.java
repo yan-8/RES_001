@@ -25,12 +25,6 @@ public class PetTests {
         final String uri = "https://petstore.swagger.io/v2";
 
         faker = new Faker(new Locale("en-US"));
-//        RestAssured.requestSpecification = new RequestSpecBuilder()
-//                .setBaseUri(uri)
-//                .setContentType("application/json")
-//                .log(LogDetail.ALL)
-//                .addFilter(new ResponseLoggingFilter())
-//                .build();
         RestAssured.baseURI = uri; // ?
     }
 
