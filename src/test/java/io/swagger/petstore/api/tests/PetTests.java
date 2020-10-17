@@ -78,7 +78,7 @@ public class PetTests {
                 .shouldHave(statusCode(200))
                 .jsonToPojo(PetResponse.class);
         softAssert.assertTrue(response.getPetId() != 0, "USER ID EQUALS 0, SHOULD NOT BE 0");
-        softAssert.assertFalse(response.getCategory().getName().equals(categoryName), "CATEGORY NAME IS WRONG, IT SHOULD BE " + categoryName);
+        softAssert.assertTrue(response.getCategory().getName().equals(categoryName), "CATEGORY NAME IS WRONG, IT SHOULD BE " + categoryName);
         softAssert.assertTrue(response.getPetName().equals(finalPetName), "PET NAME IS WRONG, IT SHOULD BE " + finalPetName);
         softAssert.assertTrue(response.getTags().get(0).getName().equals(tagName), "TAG NAME IS WRONG, IT SHOULD BE " + tagName);
         softAssert.assertAll();
