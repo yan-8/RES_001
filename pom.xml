@@ -55,6 +55,11 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.30</version>
         </dependency>
+        <dependency><!-- OWNER (API to ease Java '.property' files usage) -->
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner</artifactId>
+            <version>1.0.8</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -86,6 +91,11 @@
                         <suiteXmlFile>${project.basedir}/src/test/resources/petApi.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <argLine>-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.2/aspectjweaver-1.9.2.jar</argLine>
+                    <!--<systemPropertyVariables>-->
+                        <!--<baseUrl></baseUrl>-->
+                        <!--<isRequestAndResponseLoggingEnable>true</isRequestAndResponseLoggingEnable>-->
+                        <!--<locale>zh-CN</locale>-->
+                    <!--</systemPropertyVariables>-->
                 </configuration>
                 <dependencies>
                     <dependency>

@@ -2,11 +2,13 @@ package io.swagger.petstore.api.tests;
 
 import com.github.javafaker.Faker;
 import io.restassured.RestAssured;
+import io.swagger.petstore.api.ProjectConfig;
 import io.swagger.petstore.api.entity.Category;
 import io.swagger.petstore.api.entity.Pet;
 import io.swagger.petstore.api.entity.Tag;
 import io.swagger.petstore.api.entity.response.PetResponse;
 import io.swagger.petstore.api.service.PetService;
+import org.aeonbits.owner.ConfigFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -34,10 +36,9 @@ public class PetTests {
 
     @BeforeClass
     protected void setup() {
-        final String uri = "https://petstore.swagger.io/v2";
-
-        faker = new Faker(new Locale("en-US"));
-        RestAssured.baseURI = uri; // TODO ---> improve it
+        ProjectConfig config = ConfigFactory.create(ProjectConfig.class, System.getProperties());
+        RestAssured.baseURI = config.baseUrl();
+        faker = new Faker(new Locale(config.locale()));
     }
 
     @BeforeMethod
@@ -62,16 +63,16 @@ public class PetTests {
 
     @Test(description = "POST /pet, validation via using deserialization + test framework JUnit or TestNG")
     public void addNewPetToTheStoreTest1() {
-        String rawPetName = faker.cat().name();
+        String rawPetName = faker.name().firstName();
         String finalPetName = "TEST PET - " + rawPetName + ", " + faker.cat().breed();
         String categoryName = faker.music().instrument();
         String tagName = faker.cat().name();
-        String uri = faker.internet().avatar();
+        String petAvatar = faker.internet().avatar();
 
         ArrayList<Tag> tagsList = new ArrayList();
         tagsList.add(new Tag(0, tagName));
 
-        Pet pet = new Pet(0, new Category(0, categoryName), finalPetName, new String[] {uri}, tagsList, AVAILABLE.getValue());
+        Pet pet = new Pet(0, new Category(0, categoryName), finalPetName, new String[] {petAvatar}, tagsList, AVAILABLE.getValue());
 
         // using deserialization
         PetResponse response = petService.addPetToStore(pet)

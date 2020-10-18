@@ -6,7 +6,9 @@ import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
+import io.swagger.petstore.api.ProjectConfig;
 import lombok.extern.slf4j.Slf4j;
+import org.aeonbits.owner.ConfigFactory;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -22,8 +24,9 @@ public class ApiService {
     }
 
     private List<Filter> getFilters() {
-        Boolean isTurnOn = Boolean.valueOf(System.getProperty("requestResponseApiLogging", "true"));
-        if (isTurnOn) {
+//        Boolean isTurnOn = Boolean.valueOf(System.getProperty("isRequestAndResponseLoggingEnable", "true"));
+        ProjectConfig config = ConfigFactory.create(ProjectConfig.class, System.getProperties());
+        if (config.isRequestAndResponseLoggingEnable()) {
             return Arrays.asList(new RequestLoggingFilter(), new ResponseLoggingFilter());
         }
         return Collections.emptyList();
