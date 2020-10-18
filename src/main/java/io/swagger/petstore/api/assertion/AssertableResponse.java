@@ -12,6 +12,7 @@ public class AssertableResponse {
     private final Response response;
 
     public AssertableResponse shouldHave(Condition condition) {
+        log.info("CONDITION ---> {}", condition);
         condition.check(response);
         return this;
     }

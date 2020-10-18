@@ -2,6 +2,7 @@ package io.swagger.petstore.api.condition;
 
 import io.restassured.response.Response;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import org.hamcrest.Matcher;
 
 @RequiredArgsConstructor
@@ -12,5 +13,10 @@ public class BodyFieldCondition implements Condition {
     @Override
     public void check(Response response) {
         response.then().body(jsonPath, matcher);
+    }
+
+    @Override
+    public String toString() {
+        return "BODY FIELD [" + jsonPath + "] " + matcher;
     }
 }
