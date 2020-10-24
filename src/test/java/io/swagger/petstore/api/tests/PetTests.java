@@ -9,16 +9,10 @@ import io.swagger.petstore.api.entity.Tag;
 import io.swagger.petstore.api.entity.response.PetResponse;
 import io.swagger.petstore.api.service.PetService;
 import org.aeonbits.owner.ConfigFactory;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Locale;
 import static io.swagger.petstore.api.condition.Conditions.bodyFieldCondition;
@@ -26,8 +20,6 @@ import static io.swagger.petstore.api.condition.Conditions.statusCode;
 import static io.swagger.petstore.api.data.Status.AVAILABLE;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class PetTests {
     private PetService petService = new PetService();
@@ -72,9 +64,9 @@ public class PetTests {
         ArrayList<Tag> tagsList = new ArrayList();
         tagsList.add(new Tag(0, tagName));
 
-        Pet pet = new Pet(0, new Category(0, categoryName), finalPetName, new String[] {petAvatar}, tagsList, AVAILABLE.getValue());
+        Pet pet = new Pet(0, new Category(0, categoryName), finalPetName, new String[]{petAvatar}, tagsList, AVAILABLE.getValue());
 
-        // using deserialization
+        // using deserialization + TestNG
         PetResponse response = petService.addPetToStore(pet)
                 .shouldHave(statusCode(200))
                 .jsonToPojo(PetResponse.class);
@@ -95,7 +87,7 @@ public class PetTests {
         Pet pet = new Pet(0,
                 new Category(0, randomName),
                 randomName,
-                new String[] {"https://www.testing-x.com"},
+                new String[]{"https://www.testing-x.com"},
                 tag,
                 AVAILABLE.getValue());
 
