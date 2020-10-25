@@ -32,7 +32,7 @@ pipeline {
 
         stage("API TESTING") {
             steps {
-                sh "mvn test"
+                sh "mvn test -Dlogging=${LOGGING}"
             }
         }
     }
