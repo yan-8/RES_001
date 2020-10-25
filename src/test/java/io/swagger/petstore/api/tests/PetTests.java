@@ -43,15 +43,15 @@ public class PetTests {
 //        softAssert.assertAll();
 //    }
 
-    @Test(description = "GET pet/{petId}")
-    public void getPetTest() {
+//    @Test(description = "GET pet/{petId}")
+//    public void getPetTest() {
+//
+//    }
 
-    }
-
-    @Test(description = "GET /pet/findByStatus?status=pending")
-    public void getAllPetEntitiesByStatusTest() {
-
-    }
+//    @Test(description = "GET /pet/findByStatus?status=pending")
+//    public void getAllPetEntitiesByStatusTest() {
+//
+//    }
 
     @Test(description = "POST /pet, validation via using deserialization + test framework JUnit or TestNG")
     public void addNewPetToTheStoreTest1() {
@@ -77,7 +77,7 @@ public class PetTests {
         softAssert.assertAll();
     }
 
-    @Test(description = "POST /pet, validation via using Hamcrest")
+//    @Test(description = "POST /pet, validation via using Hamcrest")
     public void addNewPetToTheStoreTest2() {
         String randomName = "Test Pet " + faker.lorem().characters(10);
 
@@ -97,13 +97,13 @@ public class PetTests {
                 .shouldHave(bodyFieldCondition("id", not(contains(0))));
     }
 
-    @Test(description = "PUT /pet")
-    public void changePetDataTest() {
+//    @Test(description = "PUT /pet")
+//    public void changePetDataTest() {
+//
+//    }
 
-    }
-
-    @Test(description = "DELETE /pet/{petId}")
-    public void deleteExistingPetTest() {
-
-    }
+//    @Test(description = "DELETE /pet/{petId}")
+//    public void deleteExistingPetTest() {
+//
+//    }
 }
