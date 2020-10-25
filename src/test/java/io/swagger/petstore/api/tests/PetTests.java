@@ -23,21 +23,20 @@ import static org.hamcrest.Matchers.not;
 
 public class PetTests {
     private PetService petService = new PetService();
-    protected Faker faker;
+    private Faker faker;
     private SoftAssert softAssert;
+    private ProjectConfig config;
 
     @BeforeClass
     protected void setup() {
-        ProjectConfig config = ConfigFactory.create(ProjectConfig.class, System.getProperties());
+        config = ConfigFactory.create(ProjectConfig.class, System.getProperties());
         RestAssured.baseURI = config.baseUrl();
-        System.out.println("LOCALE toString-" + config.locale().toString());
-        System.out.println("LOCALE-" + config.locale());
-        faker = new Faker(new Locale(config.locale().toString()));
     }
 
     @BeforeMethod
     public void startMethod() {
         softAssert = new SoftAssert();
+        faker = new Faker(new Locale(config.locale()));
     }
 
 //    @AfterMethod
@@ -66,7 +65,7 @@ public class PetTests {
         ArrayList<Tag> tagsList = new ArrayList();
         tagsList.add(new Tag(0, tagName));
 
-        Pet pet = new Pet(0, new Category(0, categoryName), finalPetName, new String[]{petAvatar}, tagsList, AVAILABLE.getValue());
+        Pet pet = new Pet(0, new Category(0, categoryName), finalPetName, new String[] {petAvatar}, tagsList, AVAILABLE.getValue());
 
         // using deserialization + TestNG
         PetResponse response = petService.addPetToStore(pet)
