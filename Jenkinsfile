@@ -32,7 +32,7 @@ pipeline {
 
         stage("API TESTING") {
             steps {
-                sh "mvn test -DisRequestAndResponseLoggingEnable=${LOGGING} -Denvironment=${ENVIRONMENT} -Dlocale={JAVA_FAKER_LOCALE}"
+                sh "mvn test -DisRequestAndResponseLoggingEnable=${LOGGING} -Denvironment=${ENVIRONMENT} -Dlocale=${JAVA_FAKER_LOCALE}"
             }
         }
     }
