@@ -35,5 +35,19 @@ pipeline {
                 sh "mvn test -Denvironment=${ENVIRONMENT} -Dlocale=${LOCALE} -DisRequestAndResponseLoggingEnable=${LOGGING}"
             }
         }
+
+        stage("API TESTING REPORT") {
+            steps {
+                script {
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: 'target/allure-results']]
+                    ])
+                }
+            }
+        }
     }
 }
