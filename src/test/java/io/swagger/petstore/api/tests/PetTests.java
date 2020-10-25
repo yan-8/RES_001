@@ -25,18 +25,17 @@ public class PetTests {
     private PetService petService = new PetService();
     private Faker faker;
     private SoftAssert softAssert;
-    private ProjectConfig config;
 
     @BeforeClass
     protected void setup() {
-        config = ConfigFactory.create(ProjectConfig.class, System.getProperties());
+        ProjectConfig config = ConfigFactory.create(ProjectConfig.class, System.getProperties());
         RestAssured.baseURI = config.baseUrl();
+        faker = new Faker(new Locale(config.locale()));
     }
 
     @BeforeMethod
     public void startMethod() {
         softAssert = new SoftAssert();
-        faker = new Faker(new Locale(config.locale()));
     }
 
 //    @AfterMethod
