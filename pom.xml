@@ -107,12 +107,6 @@
                         <allure.results.directory>${allure.results.directory}</allure.results.directory>
                         <allure.report.directory>${allure.report.directory}</allure.report.directory>
                     </systemPropertyVariables>
-                    <!--<properties>-->
-                        <!--<property>-->
-                            <!--<name>listener</name>-->
-                            <!--<value>io.qameta.allure.testng.AllureTestNg</value>-->
-                        <!--</property>-->
-                    <!--</properties>-->
                 </configuration>
                 <dependencies>
                     <dependency>
