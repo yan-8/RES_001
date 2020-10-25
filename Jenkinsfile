@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven 3.6.1'
-        jdk 'Java JDK 1.8.0_221'
+        maven "Maven 3.6.1"
+        jdk "Java JDK 1.8.0_221"
     }
 
     stages {
@@ -26,13 +26,13 @@ pipeline {
 
         stage("MAVEN BUILDING") {
             steps {
-                sh 'mvn compile'
+                sh "mvn compile"
             }
         }
 
         stage("API TESTING") {
             steps {
-                sh 'mvn test'
+                sh "mvn test"
             }
         }
     }
