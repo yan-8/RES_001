@@ -1,4 +1,18 @@
 node {
+   tools {
+        maven 'Maven 3.6.1'
+        jdk 'Java JDK 1.8.0_221'
+   }
+
+    stage ("MAVEN INITIALIZE") {
+        steps {
+            sh '''
+                echo "PATH = ${PATH}"
+                echo "M2_HOME = ${M2_HOME}"
+            '''
+        }
+    }
+
     stage("GETTING CODE") {
         git branch: "master",
         credentialsId: "32cfa69f-f5e5-42cd-9f9c-4b2d4cb92e20",
