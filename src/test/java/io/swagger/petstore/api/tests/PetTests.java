@@ -30,7 +30,9 @@ public class PetTests {
     protected void setup() {
         ProjectConfig config = ConfigFactory.create(ProjectConfig.class, System.getProperties());
         RestAssured.baseURI = config.baseUrl();
-        faker = new Faker(new Locale(config.locale()));
+        System.out.println("LOCALE toString-" + config.locale().toString());
+        System.out.println("LOCALE-" + config.locale());
+        faker = new Faker(new Locale(config.locale().toString()));
     }
 
     @BeforeMethod
@@ -78,24 +80,24 @@ public class PetTests {
     }
 
 //    @Test(description = "POST /pet, validation via using Hamcrest")
-    public void addNewPetToTheStoreTest2()  {
-        String randomName = "Test Pet " + faker.lorem().characters(10);
-
-        ArrayList<Tag> tag = new ArrayList();
-        tag.add(new Tag(0, randomName));
-
-        Pet pet = new Pet(0,
-                new Category(0, randomName),
-                randomName,
-                new String[]{"https://www.testing-x.com"},
-                tag,
-                AVAILABLE.getValue());
-
-        // using Hamcrest
-        petService.addPetToStore(pet)
-                .shouldHave(statusCode(200))
-                .shouldHave(bodyFieldCondition("id", not(contains(0))));
-    }
+//    public void addNewPetToTheStoreTest2()  {
+//        String randomName = "Test Pet " + faker.lorem().characters(10);
+//
+//        ArrayList<Tag> tag = new ArrayList();
+//        tag.add(new Tag(0, randomName));
+//
+//        Pet pet = new Pet(0,
+//                new Category(0, randomName),
+//                randomName,
+//                new String[]{"https://www.testing-x.com"},
+//                tag,
+//                AVAILABLE.getValue());
+//
+//        // using Hamcrest
+//        petService.addPetToStore(pet)
+//                .shouldHave(statusCode(200))
+//                .shouldHave(bodyFieldCondition("id", not(contains(0))));
+//    }
 
 //    @Test(description = "PUT /pet")
 //    public void changePetDataTest() {
