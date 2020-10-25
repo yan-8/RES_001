@@ -112,8 +112,8 @@
                     <argLine>-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar</argLine>
                     <systemPropertyVariables>
                         <!--<baseUrl></baseUrl>-->
-                        <isRequestAndResponseLoggingEnable>true</isRequestAndResponseLoggingEnable>
-                        <locale>zh-CN</locale>
+                        <!--<isRequestAndResponseLoggingEnable>true</isRequestAndResponseLoggingEnable>-->
+                        <!--<locale>zh-CN</locale>-->
                         <allure.results.directory>${allure.results.directory}</allure.results.directory>
                         <allure.report.directory>${allure.report.directory}</allure.report.directory>
                     </systemPropertyVariables>
