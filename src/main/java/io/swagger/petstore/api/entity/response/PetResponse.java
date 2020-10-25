@@ -5,11 +5,13 @@ import io.swagger.petstore.api.entity.Category;
 import io.swagger.petstore.api.entity.Tag;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
 @Getter
 @Setter
+@ToString
 public class PetResponse {
     @JsonProperty("id") private long petId;
     private Category category;

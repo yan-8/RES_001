@@ -2,7 +2,6 @@ package io.swagger.petstore.api.condition;
 
 import io.restassured.response.Response;
 import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 import org.hamcrest.Matcher;
 
 @RequiredArgsConstructor

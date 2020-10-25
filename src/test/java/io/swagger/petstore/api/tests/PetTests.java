@@ -78,7 +78,7 @@ public class PetTests {
     }
 
 //    @Test(description = "POST /pet, validation via using Hamcrest")
-    public void addNewPetToTheStoreTest2() {
+    public void addNewPetToTheStoreTest2()  {
         String randomName = "Test Pet " + faker.lorem().characters(10);
 
         ArrayList<Tag> tag = new ArrayList();
