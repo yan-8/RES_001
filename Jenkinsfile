@@ -16,12 +16,6 @@ pipeline {
             }
         }
 
-        stage("XXX") {
-            steps {
-                sh 'mvn -version'
-            }
-        }
-
         stage("GETTING CODE") {
             steps {
                 git branch: "master",
@@ -30,7 +24,7 @@ pipeline {
             }
         }
 
-        stage("BUILDING") {
+        stage("MAVEN BUILDING") {
             steps {
                 sh 'mvn compile'
             }
