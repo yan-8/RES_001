@@ -6,10 +6,10 @@ node {
     }
 
     stage("BUILDING") {
-        sh "mvn compile"
+        sh 'mvn compile'
     }
 
     stage("API TESTING") {
-        sh "mvn test"
+        sh 'mvn test'
     }
 }
