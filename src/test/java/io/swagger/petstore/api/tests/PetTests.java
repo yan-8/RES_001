@@ -26,12 +26,12 @@ public class PetTests {
     private Faker faker;
     private SoftAssert softAssert;
 
-    @BeforeClass
-    protected void setup() {
-        ProjectConfig config = ConfigFactory.create(ProjectConfig.class, System.getProperties());
-        RestAssured.baseURI = config.baseUrl();
-        faker = new Faker(new Locale(config.locale()));
-    }
+//    @BeforeClass
+//    protected void setup() {
+//        ProjectConfig config = ConfigFactory.create(ProjectConfig.class, System.getProperties());
+//        RestAssured.baseURI = config.baseUrl();
+//        faker = new Faker(new Locale(config.locale()));
+//    }
 
     @BeforeMethod
     public void startMethod() {
@@ -55,6 +55,10 @@ public class PetTests {
 
     @Test(description = "POST /pet, validation via using deserialization + test framework JUnit or TestNG")
     public void addNewPetToTheStoreTest1() {
+        ProjectConfig config = ConfigFactory.create(ProjectConfig.class, System.getProperties());
+        RestAssured.baseURI = config.baseUrl();
+        faker = new Faker(new Locale(config.locale()));
+
         String rawPetName = faker.name().firstName();
         String finalPetName = "TEST PET - " + rawPetName + ", " + faker.cat().breed();
         String categoryName = faker.music().instrument();
