@@ -6,26 +6,28 @@ pipeline {
         jdk 'Java JDK 1.8.0_221'
     }
 
-    stage ("MAVEN INITIALIZE") {
-        steps {
-            sh '''
-                echo "PATH = ${PATH}"
-                echo "M2_HOME = ${M2_HOME}"
-            '''
+    stages {
+        stage ("MAVEN INITIALIZE") {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
         }
-    }
 
-    stage("GETTING CODE") {
-        git branch: "master",
-        credentialsId: "32cfa69f-f5e5-42cd-9f9c-4b2d4cb92e20",
-        url: "https://github.com/yan-8/RES_001.git"
-    }
+        stage("GETTING CODE") {
+            git branch: "master",
+            credentialsId: "32cfa69f-f5e5-42cd-9f9c-4b2d4cb92e20",
+            url: "https://github.com/yan-8/RES_001.git"
+        }
 
-    stage("BUILDING") {
-        sh 'mvn compile'
-    }
+        stage("BUILDING") {
+            sh 'mvn compile'
+        }
 
-    stage("API TESTING") {
-        sh 'mvn test'
+        stage("API TESTING") {
+            sh 'mvn test'
+        }
     }
 }
