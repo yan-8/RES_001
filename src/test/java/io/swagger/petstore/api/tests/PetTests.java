@@ -43,10 +43,10 @@ public class PetTests {
 //        softAssert.assertAll();
 //    }
 
-//    @Test(description = "GET pet/{petId}")
-//    public void getPetTest() {
-//
-//    }
+    @Test(description = "GET pet/{petId}")
+    public void getPetTest() {
+
+    }
 
 //    @Test(description = "GET /pet/findByStatus?status=pending")
 //    public void getAllPetEntitiesByStatusTest() {
@@ -55,20 +55,17 @@ public class PetTests {
 
     @Test(description = "POST /pet, validation via using deserialization + test framework JUnit or TestNG")
     public void addNewPetToTheStoreTest1() {
-//        ProjectConfig config = ConfigFactory.create(ProjectConfig.class, System.getProperties());
-//        RestAssured.baseURI = config.baseUrl();
-//        faker = new Faker(new Locale(config.locale()));
-
         String rawPetName = faker.name().firstName();
         String finalPetName = "TEST PET - " + rawPetName + ", " + faker.cat().breed();
         String categoryName = faker.music().instrument();
         String tagName = faker.cat().name();
         String petAvatar = faker.internet().avatar();
+        final int petId = 0;
 
         ArrayList<Tag> tagsList = new ArrayList();
         tagsList.add(new Tag(0, tagName));
 
-        Pet pet = new Pet(0, new Category(0, categoryName), finalPetName, new String[] {petAvatar}, tagsList, AVAILABLE.getValue());
+        Pet pet = new Pet(petId, new Category(0, categoryName), finalPetName, new String[] {petAvatar}, tagsList, AVAILABLE.getValue());
 
         // using deserialization + TestNG
         PetResponse response = petService.addPetToStore(pet)
@@ -78,6 +75,12 @@ public class PetTests {
         softAssert.assertTrue(response.getCategory().getName().equals(categoryName), "CATEGORY NAME IS WRONG, IT SHOULD BE " + categoryName);
         softAssert.assertTrue(response.getPetName().equals(finalPetName), "PET NAME IS WRONG, IT SHOULD BE " + finalPetName);
         softAssert.assertTrue(response.getTags().get(0).getName().equals(tagName), "TAG NAME IS WRONG, IT SHOULD BE " + tagName);
+        softAssert.assertAll();
+
+        PetResponse response2 = petService.validateExistedPetInStore(response.getPetId())
+                .shouldHave(statusCode(200))
+                .jsonToPojo(PetResponse.class);
+        softAssert.assertEquals(response.getPetId(), response2.getPetId(), "IDs are different");
         softAssert.assertAll();
     }
 

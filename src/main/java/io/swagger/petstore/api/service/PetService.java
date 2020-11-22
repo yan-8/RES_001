@@ -9,4 +9,9 @@ public class PetService extends ApiService {
     public AssertableResponse addPetToStore(Pet pet) {
         return new AssertableResponse(setup().body(pet).when().post("/pet"));
     }
+
+    @Step
+    public AssertableResponse validateExistedPetInStore(long petId) {
+        return new AssertableResponse(setup().when().get("/pet/" + petId));
+    }
 }
